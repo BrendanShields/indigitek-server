@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "Brendan",
+        "MONGO_PASSWORD": "iMUKC2pRiPdzBuFy",
+        "MONGO_DB": "events-gatsby"
+    }
+}
