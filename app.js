@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 const graphQlSchema = require('./graphql/schema/index')
 const graphQlResolvers = require('./graphql/resolvers/index')
-
+const isAuth = require('./middleware/is-auth')
 // creates express app object;
 const app = express();
 
@@ -15,7 +15,7 @@ const app = express();
 // parse JSON information through middleware
 app.use(bodyParser.json());
 
-
+app.use(isAuth)
 
 //graphql config, defining schema, endpoints, resolvers.
 // backticks allow multi-line string
