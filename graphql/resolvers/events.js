@@ -14,21 +14,21 @@ module.exports = {
       }
     },
     createEvent: async (args, req) => {
-        if (!req.isAuth) {
-            throw new Error('Please log in')
-        }
+        // if (!req.isAuth) {
+        //     throw new Error('Please log in')
+        // }
       const event = new Event({
         title: args.eventInput.title,
         description: args.eventInput.description,
         price: +args.eventInput.price,
         date: new Date(args.eventInput.date),
-        creator: req.userId
+        creator: args.eventInput.creator //change to req.userId
       });
       let createdEvent;
       try {
         const result = await event.save();
         createdEvent = transformEvent(result);
-        const creator = await User.findById(req.userId);
+        const creator = await User.findById(args.eventInput.creator); //change to req.userId
   
         if (!creator) {
           throw new Error('User not found.');
