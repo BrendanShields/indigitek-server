@@ -45,13 +45,17 @@ app.use('/graphql', graphqlHttp({
   })
 );
 
+app.set( 'port', ( process.env.PORT || 3000 ));
+
 // connecting to database with credentials stored in nodemon.json
 mongoose.connect(
     `mongodb+srv://${process.env.MONGO_USER}:${
         process.env.MONGO_PASSWORD
     }@indigitek-umcdl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`
     ).then(() => {
-        app.listen(process.env.PORT || 5000)
+        app.listen(app.get( 'port' ), function() {
+            console.log( 'Node server is running on port ' + app.get( 'port' ));
+            });)
     }).catch(err => {
         console.log(err);
     })
