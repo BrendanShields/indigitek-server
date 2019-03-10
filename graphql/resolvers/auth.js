@@ -1,3 +1,7 @@
+// resolvers are functions used to format and process data
+// passed in through graphQL, creating the functionality of the crud system
+
+
 const bcrypt = require('bcryptjs');
 const User = require('../../models/user');
 const jwt = require('jsonwebtoken');

@@ -22,6 +22,10 @@ const singleEvent = async eventId => {
   }
 };
 
+
+// spread operator allows an iterable such as an array or string to be expanded in place where zero or more arguments or elements are expected.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+
 const user = async userId => {
   try {
     const user = await User.findById(userId);
@@ -44,6 +48,16 @@ const transformEvent = event => {
   };
 };
 
+const transformUser = event => {
+  return {
+    ...user._doc,
+    _id: user.id,
+    user_name: user.user_name,
+    surname: user.surname,
+    email: user.email,
+  };
+};
+
 const transformBooking = booking => {
   return {
     ...booking._doc,
@@ -57,7 +71,7 @@ const transformBooking = booking => {
 
 exports.transformEvent = transformEvent;
 exports.transformBooking = transformBooking;
-
+exports.transformUser = transformUser;
 // exports.user = user;
 // exports.events = events;
 // exports.singleEvent = singleEvent;

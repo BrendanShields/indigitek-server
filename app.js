@@ -1,6 +1,12 @@
+
+// express cuts down on repetitive tasks like parsing urls and ensures that
+// things are secure. It is a node framework building upon node and offering
+// functionality.
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql') 
+
 // destructure to pull certain properties from object
  
 const mongoose = require('mongoose')
@@ -8,11 +14,13 @@ const mongoose = require('mongoose')
 const graphQlSchema = require('./graphql/schema/index')
 const graphQlResolvers = require('./graphql/resolvers/index')
 const isAuth = require('./middleware/is-auth')
+
 // creates express app object;
+
 const app = express();
-const port = process.env.PORT || 3000
 
 // parse JSON information through middleware
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -37,16 +45,14 @@ app.use('/graphql', graphqlHttp({
   })
 );
 
-app.listen(port)
 // connecting to database with credentials stored in nodemon.json
 mongoose.connect(
     `mongodb+srv://${process.env.MONGO_USER}:${
         process.env.MONGO_PASSWORD
     }@indigitek-umcdl.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`
     ).then(() => {
-        app.listen(port || 3000)
+        app.listen(process.env.PORT || 5000)
     }).catch(err => {
         console.log(err);
     })
-
 //listens on port 3000

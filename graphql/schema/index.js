@@ -1,3 +1,6 @@
+// The graphQL Schema tells graphql what the different models look like.
+// the rootQuery tells graphQL what it can query and return
+// likewise the rootmutation tells graphQL what can be altered.
 const { buildSchema } = require('graphql');
 
 module.exports = buildSchema(`
