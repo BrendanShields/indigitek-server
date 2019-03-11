@@ -55,7 +55,7 @@ mongoose.connect(
     ).then(() => {
         app.listen(app.get( 'port' ), function() {
             console.log( 'Node server is running on port ' + app.get( 'port' ));
-            });)
+            })
     }).catch(err => {
         console.log(err);
     })
