@@ -12,3 +12,5 @@ npm install -dev nodemon {
 test with app.get request
 
 npm install express-graphql
+
+links to heroku and test front end coming soon.
